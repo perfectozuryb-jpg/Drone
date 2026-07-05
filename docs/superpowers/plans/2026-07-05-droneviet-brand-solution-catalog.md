@@ -13,7 +13,7 @@
 - No admin dashboard or database in v1.
 - Content must load from local Markdown/data source files.
 - UI direction must be high-tech drone lab, not a generic education landing page.
-- Primary CTA text must be "Xem bo giai phap drone giao duc".
+- Primary CTA text must be "Liên hệ tư vấn ngay" and open Zalo at `https://zalo.me/0384070636`.
 - The site must be deployable to Vercel with `npm run build`.
 - Page components must consume typed content loader functions instead of importing raw Markdown/data directly.
 - Real images are not available; use structured visual placeholders that can be replaced later.
@@ -129,4 +129,3 @@
 - [ ] Run `npm run test`.
 - [ ] Run `npm run build`.
 - [ ] Start local dev server and inspect the rendered site.
-

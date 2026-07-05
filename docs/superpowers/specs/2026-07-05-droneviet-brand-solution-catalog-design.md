@@ -4,7 +4,7 @@
 
 Build the first public version of `droneviet.vn`: a high-tech education drone brand website that presents Drone Viet as a credible provider of drone education solutions for schools, STEM centers, parents, and students.
 
-The primary call to action is "Xem bo giai phap drone giao duc".
+The primary call to action is "Liên hệ tư vấn ngay" and opens Zalo at `https://zalo.me/0384070636`.
 
 ## Audience
 
@@ -187,4 +187,3 @@ The UI should consume typed content functions, not import raw Markdown directly 
 ## Deployment
 
 The project must deploy on Vercel using default Next.js settings. The expected production build command is `npm run build`.
-
