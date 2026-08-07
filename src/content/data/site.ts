@@ -9,6 +9,7 @@ export const sourceContentVi = {
         "Drone Việt cung cấp giải pháp drone cho nghiên cứu và giáo dục từ cấp 1 đến đại học: thiết bị, giáo trình, tài liệu triển khai, nền tảng thử nghiệm và dịch vụ đồng hành.",
     },
     navigation: [
+      { label: "Bản đồ vùng bay", href: "/ban-do" },
       { label: "Giải pháp", href: "/giai-phap" },
       { label: "Sản phẩm", href: "/san-pham" },
       { label: "Giáo trình", href: "/giao-trinh" },
@@ -325,6 +326,7 @@ export const sourceContentEn = {
         "Drone Viet provides drone solutions for research and education from grade school to university: hardware, curriculum, deployment materials, test platforms, and implementation support.",
     },
     navigation: [
+      { label: "Flight Zone Map", href: "/en/map" },
       { label: "Solutions", href: "/en/solutions" },
       { label: "Products", href: "/en/products" },
       { label: "Curriculum", href: "/en/curriculum" },

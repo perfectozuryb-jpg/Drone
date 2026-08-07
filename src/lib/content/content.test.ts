@@ -20,6 +20,7 @@ describe("content loaders", () => {
       "Drone cho nghiên cứu và giáo dục từ cấp 1 đến đại học",
     );
     expect(site.navigation.map((item) => item.label)).toEqual([
+      "Bản đồ vùng bay",
       "Giải pháp",
       "Sản phẩm",
       "Giáo trình",

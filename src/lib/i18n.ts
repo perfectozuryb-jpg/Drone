@@ -2,6 +2,7 @@ import type { Locale } from "@/lib/content";
 
 const routePairs = [
   ["/", "/en"],
+  ["/ban-do", "/en/map"],
   ["/giai-phap", "/en/solutions"],
   ["/san-pham", "/en/products"],
   ["/giao-trinh", "/en/curriculum"],
@@ -19,7 +20,11 @@ export function getLocaleFromPathname(pathname: string): Locale {
 }
 
 export function getAlternateLocaleHref(pathname: string, locale: Locale): string {
-  return locale === "vi" ? viToEn.get(pathname) ?? "/en" : enToVi.get(pathname) ?? "/";
+  const cleanPath = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  if (locale === "vi") {
+    return viToEn.get(cleanPath) ?? "/en";
+  }
+  return enToVi.get(cleanPath) ?? "/";
 }
 
 export function getLanguageSwitchLabel(locale: Locale): string {

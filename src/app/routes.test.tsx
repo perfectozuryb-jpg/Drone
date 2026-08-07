@@ -10,6 +10,8 @@ import ArticlePage, { generateStaticParams } from "./tin-tuc/[slug]/page";
 import EnglishHomePage from "./en/page";
 import EnglishProductsPage from "./en/products/page";
 import EnglishNewsPage from "./en/news/page";
+import MapPage from "./ban-do/page";
+import EnglishMapPage from "./en/map/page";
 
 describe("public routes", () => {
   it("renders the landing page solution CTA and proof sections", async () => {
@@ -126,6 +128,22 @@ describe("public routes", () => {
     expect(screen.getByRole("heading", { name: "News and resources" })).toBeInTheDocument();
     expect(
       screen.getByText("Drones in STEM classrooms and applied research"),
+    ).toBeInTheDocument();
+    cleanup();
+
+    render(await MapPage());
+    expect(
+      screen.getByRole("heading", {
+        name: "Bản đồ tra cứu & kiểm tra vùng cấm bay drone Việt Nam",
+      }),
+    ).toBeInTheDocument();
+    cleanup();
+
+    render(await EnglishMapPage());
+    expect(
+      screen.getByRole("heading", {
+        name: "Vietnam Drone No-Fly & Restricted Zone Checker",
+      }),
     ).toBeInTheDocument();
   });
 });

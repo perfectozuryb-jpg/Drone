@@ -4,6 +4,7 @@ import { buildAbsoluteUrl } from "@/lib/seo";
 
 const staticRoutePairs = [
   ["/", "/en", 1],
+  ["/ban-do", "/en/map", 0.9],
   ["/san-pham", "/en/products", 0.9],
   ["/giai-phap", "/en/solutions", 0.9],
   ["/giao-trinh", "/en/curriculum", 0.85],
