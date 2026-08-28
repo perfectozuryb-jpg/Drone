@@ -3,22 +3,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionShell } from "@/components/section-shell";
 import { getArticles } from "@/lib/content";
+import { NewsBoard } from "@/components/news/NewsBoard";
 
 export const metadata: Metadata = {
-  title: "News and resources",
+  title: "News and resources | MSN Drone Feed",
   description:
-    "Articles and learning materials about drones for STEM, research, curriculum, and lab deployment.",
+    "Real-time dynamic drone information stream: Legal regulations, firmware releases, technical discussions, and STEM guides.",
 };
 
-export default async function EnglishNewsPage() {
+export default function EnglishNewsPage() {
   const articles = getArticles("en");
 
   return (
     <SectionShell
-      eyebrow="Knowledge base"
-      title="News and resources"
-      description="Markdown-backed content ready to move into a CMS later."
+      eyebrow="Live Drone Stream & Knowledge base"
+      title="Drone Information System"
+      description="Stay updated with a dynamic live stream of drone regulations, firmware releases, hardware reviews, and FPV community discussions."
     >
+      {/* MSN Edge-Style Dynamic News Stream */}
+      <NewsBoard />
+
+      <h3 className="mt-12 mb-6 text-xl font-bold text-[#0B1117] border-b pb-2">Archived Articles</h3>
       <div className="grid gap-5 md:grid-cols-2">
         {articles.map((article) => (
           <Link
@@ -38,4 +43,3 @@ export default async function EnglishNewsPage() {
     </SectionShell>
   );
 }
-
