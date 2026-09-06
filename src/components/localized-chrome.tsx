@@ -27,6 +27,7 @@ export function LocalizedChrome({ children, content }: LocalizedChromeProps) {
         brandName={site.brand.name}
         navigation={site.navigation}
         primaryCta={site.hero.primaryCta}
+        homeHref={locale === "en" ? "/en" : "/"}
         languageSwitch={{
           href: getAlternateLocaleHref(pathname, locale),
           label: getLanguageSwitchLabel(locale),

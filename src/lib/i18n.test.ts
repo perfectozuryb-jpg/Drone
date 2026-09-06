@@ -10,6 +10,12 @@ describe("i18n routing", () => {
     expect(getLocaleFromPathname("/")).toBe("vi");
     expect(getLocaleFromPathname("/en/products")).toBe("en");
     expect(getAlternateLocaleHref("/san-pham", "vi")).toBe("/en/products");
+    expect(
+      getAlternateLocaleHref("/san-pham/dv-primary-lab", "vi"),
+    ).toBe("/en/products/dv-primary-lab");
+    expect(
+      getAlternateLocaleHref("/en/products/dv-primary-lab", "en"),
+    ).toBe("/san-pham/dv-primary-lab");
     expect(getAlternateLocaleHref("/en/news/drone-stem-research", "en")).toBe(
       "/tin-tuc/drone-giao-duc-stem",
     );

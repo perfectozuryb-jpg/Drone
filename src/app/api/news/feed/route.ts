@@ -9,11 +9,15 @@ export async function GET(request: Request) {
     const category = searchParams.get('category') || 'all';
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '9', 10);
+    const topic = searchParams.get('topic') || undefined;
+    const search = searchParams.get('search') || searchParams.get('q') || undefined;
 
     const result = await getZeroStorageFeed({
       category,
       page,
       limit,
+      topic,
+      search,
     });
 
     return NextResponse.json(

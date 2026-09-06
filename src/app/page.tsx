@@ -14,6 +14,43 @@ export function HomePageContent({ locale = "vi" }: { locale?: Locale }) {
   const services = getServices(locale);
   const compactServices = services.slice(0, 3);
 
+  const sectionContent = {
+    vi: {
+      solutions: {
+        eyebrow: "Solution catalog",
+        title: "5 cấu hình drone trọng điểm",
+        description: "Từ lớp học cấp 1 đến lab nghiên cứu đại học.",
+      },
+      services: {
+        eyebrow: "Services",
+        title: "Triển khai nhanh, đúng mục tiêu",
+        description: "Thiết bị, lab, giáo trình và nền tảng nghiên cứu.",
+      },
+      deployment: {
+        eyebrow: "Deployment",
+        title: "3 bước đưa drone vào lớp học và lab",
+        description: "Rõ mục tiêu, đúng thiết bị, vận hành được ngay.",
+      },
+    },
+    en: {
+      solutions: {
+        eyebrow: "Solution catalog",
+        title: "5 core drone configurations",
+        description: "From primary classrooms to university research laboratories.",
+      },
+      services: {
+        eyebrow: "Services",
+        title: "Fast, goal-oriented deployment",
+        description: "Hardware, lab setup, curriculum, and research platforms.",
+      },
+      deployment: {
+        eyebrow: "Deployment",
+        title: "3 steps to launch drones in classrooms and labs",
+        description: "Clear goals, right hardware, ready to operate immediately.",
+      },
+    },
+  }[locale];
+
   return (
     <>
       <DroneLabShowroom
@@ -26,9 +63,9 @@ export function HomePageContent({ locale = "vi" }: { locale?: Locale }) {
       />
 
       <SectionShell
-        eyebrow="Solution catalog"
-        title="5 cấu hình drone trọng điểm"
-        description="Từ lớp học cấp 1 đến lab nghiên cứu đại học."
+        eyebrow={sectionContent.solutions.eyebrow}
+        title={sectionContent.solutions.title}
+        description={sectionContent.solutions.description}
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {featuredDrones.map((drone, index) => (
@@ -76,9 +113,9 @@ export function HomePageContent({ locale = "vi" }: { locale?: Locale }) {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Services"
-        title="Triển khai nhanh, đúng mục tiêu"
-        description="Thiết bị, lab, giáo trình và nền tảng nghiên cứu."
+        eyebrow={sectionContent.services.eyebrow}
+        title={sectionContent.services.title}
+        description={sectionContent.services.description}
         tone="dark"
       >
         <div className="grid gap-4 md:grid-cols-3">
@@ -110,9 +147,9 @@ export function HomePageContent({ locale = "vi" }: { locale?: Locale }) {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Deployment"
-        title="3 bước đưa drone vào lớp học và lab"
-        description="Rõ mục tiêu, đúng thiết bị, vận hành được ngay."
+        eyebrow={sectionContent.deployment.eyebrow}
+        title={sectionContent.deployment.title}
+        description={sectionContent.deployment.description}
       >
         <div className="grid gap-4 md:grid-cols-3">
           {site.process.map((step, index) => (

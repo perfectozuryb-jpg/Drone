@@ -78,7 +78,9 @@ describe("public routes", () => {
     cleanup();
 
     render(await ArticlesPage());
-    expect(screen.getByRole("heading", { name: "Tin tức và học liệu" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Hệ thống Thông tin Drone Việt Nam" }),
+    ).toBeInTheDocument();
     expect(
       screen.getByText("Drone trong lớp học STEM và nghiên cứu ứng dụng"),
     ).toBeInTheDocument();
@@ -125,7 +127,9 @@ describe("public routes", () => {
     cleanup();
 
     render(await EnglishNewsPage());
-    expect(screen.getByRole("heading", { name: "News and resources" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Drone Information System" }),
+    ).toBeInTheDocument();
     expect(
       screen.getByText("Drones in STEM classrooms and applied research"),
     ).toBeInTheDocument();

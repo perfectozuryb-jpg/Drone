@@ -19,6 +19,14 @@ type PublishedDocItem = {
   status: 'published';
 };
 
+type LegalDocActionPayload = {
+  url: string;
+  title?: string;
+  docNumber?: string;
+  abstract?: string;
+  date?: string;
+};
+
 export default function AdminLegalDashboard() {
   const [authorized, setAuthorized] = useState<boolean | null>(null);
   const [passphrase, setPassphrase] = useState('');
@@ -26,7 +34,7 @@ export default function AdminLegalDashboard() {
   
   const [pending, setPending] = useState<PendingUrlItem[]>([]);
   const [published, setPublished] = useState<PublishedDocItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchDocs = async () => {
     setLoading(true);
@@ -51,7 +59,36 @@ export default function AdminLegalDashboard() {
   };
 
   useEffect(() => {
-    fetchDocs();
+    let ignore = false;
+    async function loadInitial() {
+      try {
+        const res = await fetch('/api/admin/legal');
+        if (ignore) return;
+        if (res.status === 401) {
+          setAuthorized(false);
+          setLoading(false);
+          return;
+        }
+
+        const json = await res.json();
+        if (ignore) return;
+        if (json.success) {
+          setAuthorized(true);
+          setPending(json.pending || []);
+          setPublished(json.published || []);
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
+      }
+    }
+    loadInitial();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -189,7 +226,7 @@ function PendingCard({
   onAction,
 }: {
   item: PendingUrlItem;
-  onAction: (doc: any, action: 'publish' | 'delete') => void;
+  onAction: (doc: LegalDocActionPayload, action: 'publish' | 'delete') => void;
 }) {
   const [title, setTitle] = useState('');
   const [docNumber, setDocNumber] = useState('');

@@ -11,6 +11,7 @@ type SiteHeaderProps = {
   navigation: LinkItem[];
   primaryCta: LinkItem;
   languageSwitch?: LinkItem;
+  homeHref?: string;
 };
 
 export function SiteHeader({
@@ -18,6 +19,7 @@ export function SiteHeader({
   navigation,
   primaryCta,
   languageSwitch,
+  homeHref = "/",
 }: SiteHeaderProps) {
   const primaryCtaIsExternal = primaryCta.href.startsWith("http");
 
@@ -25,7 +27,7 @@ export function SiteHeader({
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B1117]/92 text-white backdrop-blur-xl">
       <div className="mx-auto flex min-h-18 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link
-          href="/"
+          href={homeHref}
           className="group flex items-center gap-3 text-sm font-semibold"
           aria-label={brandName}
         >

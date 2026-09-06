@@ -1,6 +1,7 @@
 'use client';
 
-import { ExternalLink, ShieldCheck, AlertTriangle, FileText, MapPin, FileCheck, UserCheck, Building2, Download, Wrench, Search } from 'lucide-react';
+import type { ComponentType } from 'react';
+import { ExternalLink, AlertTriangle, FileText, MapPin, FileCheck, UserCheck, Building2, Download, Wrench, Search } from 'lucide-react';
 
 interface LegalDoc {
   title: string;
@@ -11,7 +12,7 @@ interface LegalDoc {
 
 interface LegalGroup {
   groupName: string;
-  icon: any;
+  icon: ComponentType<{ className?: string }>;
   docs: LegalDoc[];
 }
 

@@ -4,9 +4,10 @@ import type { Service } from "@/lib/content/schema";
 
 type ServiceCardProps = {
   service: Service;
+  locale?: "vi" | "en";
 };
 
-export function ServiceCard({ service }: ServiceCardProps) {
+export function ServiceCard({ service, locale = "vi" }: ServiceCardProps) {
   return (
     <article className="flex h-full flex-col rounded-lg border border-white/10 bg-white/8 p-5 text-white backdrop-blur">
       <div className="mb-4 grid size-11 place-items-center rounded-lg bg-[#00D1C1]/12 text-[#00D1C1]">
@@ -25,7 +26,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         ))}
       </ul>
       <Link
-        href={`/dich-vu#${service.slug}`}
+        href={locale === "en" ? `/en/services#${service.slug}` : `/dich-vu#${service.slug}`}
         className="mt-5 inline-flex items-center justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-[#0B1117] transition hover:bg-[#00D1C1]"
       >
         {service.ctaLabel}

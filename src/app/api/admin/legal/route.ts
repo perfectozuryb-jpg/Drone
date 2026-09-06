@@ -8,11 +8,18 @@ import {
   rejectPendingLegalUrl
 } from '@/lib/redis';
 
+function timingSafeCheck(a: string, b: string): boolean {
+  const hashA = crypto.createHash('sha256').update(a).digest();
+  const hashB = crypto.createHash('sha256').update(b).digest();
+  return crypto.timingSafeEqual(hashA, hashB);
+}
+
 async function isAuthorized() {
   const cookieStore = await cookies();
   const session = cookieStore.get('drone_admin_session')?.value;
   const adminSecret = process.env.ADMIN_SECRET_KEY || 'droneviet_admin_secret_2026';
-  return session === adminSecret;
+  if (!session) return false;
+  return timingSafeCheck(session, adminSecret);
 }
 
 function generateMD5(input: string) {

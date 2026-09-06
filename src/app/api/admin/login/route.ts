@@ -1,11 +1,18 @@
 import { NextResponse } from 'next/server';
+import crypto from 'node:crypto';
+
+function timingSafeCheck(a: string, b: string): boolean {
+  const hashA = crypto.createHash('sha256').update(a).digest();
+  const hashB = crypto.createHash('sha256').update(b).digest();
+  return crypto.timingSafeEqual(hashA, hashB);
+}
 
 export async function POST(request: Request) {
   try {
     const { passphrase } = await request.json();
     const adminSecret = process.env.ADMIN_SECRET_KEY || 'droneviet_admin_secret_2026';
 
-    if (passphrase !== adminSecret) {
+    if (typeof passphrase !== 'string' || !timingSafeCheck(passphrase, adminSecret)) {
       return NextResponse.json({ error: 'Secret Key không chính xác' }, { status: 401 });
     }
 
@@ -21,7 +28,7 @@ export async function POST(request: Request) {
     });
 
     return response;
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
